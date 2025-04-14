@@ -4,6 +4,17 @@ from testing_data import TestingData
 import pytest
 
 class TestIngredient:
+    @pytest.fixture(scope='function')
+    def ingredient_sauce(self):
+        test_ingredient_sauce = Ingredient(INGREDIENT_TYPE_SAUCE, TestingData.HOT_SAUCE_NAME,
+                                           TestingData.HOT_SAUCE_PRICE)
+        return test_ingredient_sauce
+
+    @pytest.fixture(scope='function')
+    def ingredient_filling(self):
+        test_ingredient_filling = Ingredient(INGREDIENT_TYPE_FILLING, TestingData.CHILI_SAUCE_NAME,
+                                             TestingData.CUTLET_FILLING_PRICE)
+        return test_ingredient_filling
     @pytest.mark.parametrize('name, price', [
         (TestingData.HOT_SAUCE_NAME, TestingData.HOT_SAUCE_PRICE),
         (TestingData.SOUR_CREAM_NAME, TestingData.SOUR_CREAM_PRICE),

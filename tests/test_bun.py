@@ -3,6 +3,10 @@ from testing_data import TestingData
 import pytest
 
 class TestBun:
+    @pytest.fixture(scope='function')
+    def bun(self):
+        test_bun = Bun(TestingData.BLACK_BUN_NAME, TestingData.BLACK_BUN_PRICE)
+        return test_bun
     @pytest.mark.parametrize('name, price', [
         (TestingData.BLACK_BUN_NAME, TestingData.BLACK_BUN_PRICE),
         (TestingData.WHITE_BUN_NAME, TestingData.WHITE_BUN_PRICE),

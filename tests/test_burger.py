@@ -2,9 +2,24 @@ from testing_data import TestingData
 from src.bun import Bun
 from src.ingredient import Ingredient
 from src.ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FILLING
+from src.burger import Burger
+from unittest.mock import Mock
 import pytest
 
 class TestBurger:
+    @pytest.fixture(scope='function')
+    def burger(seld):
+        test_burger = Burger()
+        return test_burger
+    @pytest.fixture(scope='function')
+    def bun(self):
+        test_bun = Bun(TestingData.BLACK_BUN_NAME, TestingData.BLACK_BUN_PRICE)
+        return test_bun
+
+    @pytest.fixture(scope='function')
+    def mock(self):
+        mock = Mock()
+        return mock
     @pytest.mark.parametrize('name, price', [
         (TestingData.BLACK_BUN_NAME, TestingData.BLACK_BUN_PRICE),
         (TestingData.WHITE_BUN_NAME, TestingData.WHITE_BUN_PRICE),

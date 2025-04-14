@@ -1,7 +1,12 @@
 from testing_data import TestingData
+from src.database import Database
 import pytest
 
 class TestDatabase:
+    @pytest.fixture(scope='function')
+    def db(self):
+        return Database()
+
     @pytest.mark.parametrize('bun_index, expected_available_bun_name', [
         (0, TestingData.BLACK_BUN_NAME),
         (1, TestingData.WHITE_BUN_NAME),
